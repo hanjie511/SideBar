@@ -17,11 +17,11 @@ import java.util.logging.Handler;
 
 public class AlphabetView extends View  {
 
-    private OnTouchListener touch=null;
+    private OnClickListener click=null;
     private ObjectAnimator animator;
 
     TextView text;
-    public String [] alpha=new String[]{"#","A","B","C","D","E","F","J","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    public static String [] alpha=new String[]{"#","A","B","C","D","E","F","J","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     int index=-1;
     public AlphabetView(Context context) {
         super(context);
@@ -41,7 +41,7 @@ public class AlphabetView extends View  {
                 break;
             default:
                 index=(int)(y/(max_height/27));
-                touch.getAlpha(alpha[index],event);
+                click.onClick(alpha[index]);
                 text.setText(alpha[index]);
                 text.setVisibility(View.VISIBLE);
                 animator=ObjectAnimator.ofFloat(text,"alpha",1,0).setDuration(2000);
@@ -52,8 +52,8 @@ public class AlphabetView extends View  {
 
         return true;
     }
-    public void setOnTouchListener(OnTouchListener l) {
-        touch=l;
+    public void setOnClickListener(OnClickListener l) {
+        click=l;
     }
     @Override
     protected void onDraw(Canvas canvas) {
@@ -78,8 +78,8 @@ public class AlphabetView extends View  {
             canvas.drawText(alpha[i],max_width-45,(max_height/27)*i+(max_height/27)-20,text_paint);
         }
     }
-    public interface OnTouchListener{
-        void getAlpha(String alpha_value, MotionEvent event);
+    public interface OnClickListener{
+        void onClick(String alpha);
     }
     public void setText(TextView text){
         this.text=text;
