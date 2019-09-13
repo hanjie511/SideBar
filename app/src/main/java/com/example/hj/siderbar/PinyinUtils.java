@@ -34,8 +34,8 @@ public class PinyinUtils {
     /*
     将传过来的字符串列表按A-Z的顺序排序后返回
      */
-    public static ArrayList<ArrayList<String>> getSortedListByAlpha(ArrayList<String> list){
-        ArrayList<ArrayList<String>> total_list=new ArrayList<ArrayList<String>>();
+    public static ArrayList<String> getSortedListByAlpha(ArrayList<String> list){
+        ArrayList<String> total_list=new ArrayList<String>();
         ArrayList<String> aList=new ArrayList<String>();
         aList.add("A");
         ArrayList<String> bList=new ArrayList<String>();
@@ -178,83 +178,161 @@ public class PinyinUtils {
 
             }
         }
-        if(aList.size()>0){
-            total_list.add(aList);
+        if(aList.size()>1){
+            for(String str:aList){
+                total_list.add(str);
+            }
+            aList.clear();
         }
-        if(bList.size()>0){
-            total_list.add(bList);
+        if(bList.size()>1){
+            for(String str:bList){
+                total_list.add(str);
+            }
+            bList.clear();
         }
-        if(cList.size()>0){
-            total_list.add(cList);
+        if(cList.size()>1){
+            for(String str:cList){
+                total_list.add(str);
+            }
+            cList.clear();
         }
-        if(dList.size()>0){
-            total_list.add(dList);
+        if(dList.size()>1){
+            for(String str:dList){
+                total_list.add(str);
+            }
+            dList.clear();
         }
-        if(eList.size()>0){
-            total_list.add(eList);
+        if(eList.size()>1){
+            for(String str:eList){
+                total_list.add(str);
+            }
+            eList.clear();
         }
-        if(fList.size()>0){
-            total_list.add(fList);
+        if(fList.size()>1){
+            for(String str:fList){
+                total_list.add(str);
+            }
+            fList.clear();
         }
-        if(gList.size()>0){
-            total_list.add(gList);
+        if(gList.size()>1){
+            for(String str:gList){
+                total_list.add(str);
+            }
+            gList.clear();
         }
-        if(hList.size()>0){
-            total_list.add(hList);
+        if(hList.size()>1){
+            for(String str:hList){
+                total_list.add(str);
+            }
+            hList.clear();
         }
-        if(iList.size()>0){
-            total_list.add(iList);
+        if(iList.size()>1){
+            for(String str:iList){
+                total_list.add(str);
+            }
+            iList.clear();
         }
-        if(jList.size()>0){
-            total_list.add(jList);
+        if(jList.size()>1){
+            for(String str:jList){
+                total_list.add(str);
+            }
+            jList.clear();
         }
-        if(kList.size()>0){
-            total_list.add(kList);
+        if(kList.size()>1){
+            for(String str:kList){
+                total_list.add(str);
+            }
+            kList.clear();
         }
-        if(lList.size()>0){
-            total_list.add(lList);
+        if(lList.size()>1){
+            for(String str:lList){
+                total_list.add(str);
+            }
+            lList.clear();
         }
-        if(mList.size()>0){
-            total_list.add(mList);
+        if(mList.size()>1){
+            for(String str:mList){
+                total_list.add(str);
+            }
+            mList.clear();
         }
-        if(nList.size()>0){
-            total_list.add(nList);
+        if(nList.size()>1){
+            for(String str:nList){
+                total_list.add(str);
+            }
+            nList.clear();
         }
-        if(oList.size()>0){
-            total_list.add(oList);
+        if(oList.size()>1){
+            for(String str:oList){
+                total_list.add(str);
+            }
+            oList.clear();
         }
-        if(pList.size()>0){
-            total_list.add(pList);
+        if(pList.size()>1){
+            for(String str:pList){
+                total_list.add(str);
+            }
+            pList.clear();
         }
-        if(qList.size()>0){
-            total_list.add(qList);
+        if(qList.size()>1){
+            for(String str:qList){
+                total_list.add(str);
+            }
+            qList.clear();
         }
-        if(rList.size()>0){
-            total_list.add(rList);
+        if(rList.size()>1){
+            for(String str:rList){
+                total_list.add(str);
+            }
+            rList.clear();
         }
-        if(sList.size()>0){
-            total_list.add(sList);
+        if(sList.size()>1){
+            for(String str:dList){
+                total_list.add(str);
+            }
+            sList.clear();
         }
-        if(tList.size()>0){
-            total_list.add(tList);
+        if(tList.size()>1){
+            for(String str:tList){
+                total_list.add(str);
+            }
+            tList.clear();
         }
-        if(uList.size()>0){
-            total_list.add(uList);
+        if(uList.size()>1){
+            for(String str:uList){
+                total_list.add(str);
+            }
+            uList.clear();
         }
-        if(vList.size()>0){
-            total_list.add(vList);
+        if(vList.size()>1){
+            for(String str:vList){
+                total_list.add(str);
+            }
+            vList.clear();
         }
-        if(wList.size()>0){
-            total_list.add(wList);
+        if(wList.size()>1){
+            for(String str:wList){
+                total_list.add(str);
+            }
+            wList.clear();
         }
-        if(xList.size()>0){
-            total_list.add(xList);
+        if(xList.size()>1){
+            for(String str:xList){
+                total_list.add(str);
+            }
+            xList.clear();
         }
-        if(yList.size()>0){
-            total_list.add(yList);
+        if(yList.size()>1){
+            for(String str:yList){
+                total_list.add(str);
+            }
+            yList.clear();
         }
-        if(zList.size()>0){
-            total_list.add(zList);
+        if(zList.size()>1){
+            for(String str:zList){
+                total_list.add(str);
+            }
+            zList.clear();
         }
         return total_list;
     }
