@@ -7,19 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
-    ArrayList<String> list;
-    public static Map<String,Integer> index_map=new HashMap<String, Integer>();
+    ArrayList<Map<String,String>> list;
+    String group_text="";
     public static class VH extends RecyclerView.ViewHolder{
         TextView groupText;
         TextView username;
         LinearLayout linear;
-
         public VH(View view){
             super(view);
             groupText=view.findViewById(R.id.group_text_item);
@@ -27,7 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
             linear=view.findViewById(R.id.username_linear);
         }
     }
-    public MyAdapter(ArrayList<String> list){
+    public MyAdapter(ArrayList<Map<String,String>>list){
         this.list=list;
     }
 
@@ -41,16 +37,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH vh, int i) {
-        String name=list.get(i);
+        String name=list.get(i).get("name");
         if(name.length()==1){
-            index_map.put(name,i);
-            vh.linear.setVisibility(View.GONE);
-            vh.groupText.setVisibility(View.VISIBLE);
-            vh.groupText.setText(name);
-       }else{
+            if(name.charAt(0)>=65&&name.charAt(0)<=90){
+                vh.linear.setVisibility(View.GONE);
+                vh.groupText.setVisibility(View.VISIBLE);
+                vh.groupText.setText(name);
+                vh.username.setTag(list.get(i).get("tag"));
+            }
+
+        }else{
             vh.linear.setVisibility(View.VISIBLE);
             vh.groupText.setVisibility(View.GONE);
             vh.username.setText(name);
+            vh.username.setTag(list.get(i).get("tag"));
        }
     }
 
@@ -58,4 +58,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
     public int getItemCount() {
         return list.size();
     }
+
 }

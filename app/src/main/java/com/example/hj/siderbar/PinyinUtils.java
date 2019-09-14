@@ -7,9 +7,11 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PinyinUtils {
+
     /*
     该方法将字符串的首个汉字字符转化为拼音
      */
@@ -34,8 +36,8 @@ public class PinyinUtils {
     /*
     将传过来的字符串列表按A-Z的顺序排序后返回
      */
-    public static ArrayList<String> getSortedListByAlpha(ArrayList<String> list){
-        ArrayList<String> total_list=new ArrayList<String>();
+    public static ArrayList<Map<String,String>>getSortedListByAlpha(ArrayList<String> list){
+        ArrayList<Map<String,String>> total_list=new ArrayList<Map<String,String>>();
         ArrayList<String> aList=new ArrayList<String>();
         aList.add("A");
         ArrayList<String> bList=new ArrayList<String>();
@@ -180,157 +182,236 @@ public class PinyinUtils {
         }
         if(aList.size()>1){
             for(String str:aList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","A");
+                total_list.add(map);
             }
             aList.clear();
         }
         if(bList.size()>1){
+
             for(String str:bList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","B");
+                total_list.add(map);
             }
             bList.clear();
         }
         if(cList.size()>1){
             for(String str:cList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","C");
+                total_list.add(map);
             }
             cList.clear();
         }
         if(dList.size()>1){
             for(String str:dList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","D");
+                total_list.add(map);
             }
             dList.clear();
         }
         if(eList.size()>1){
             for(String str:eList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","E");
+                total_list.add(map);
             }
             eList.clear();
         }
         if(fList.size()>1){
             for(String str:fList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","F");
+                total_list.add(map);
             }
             fList.clear();
         }
         if(gList.size()>1){
             for(String str:gList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","G");
+                total_list.add(map);
             }
             gList.clear();
         }
         if(hList.size()>1){
             for(String str:hList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","H");
+                total_list.add(map);
             }
             hList.clear();
         }
         if(iList.size()>1){
             for(String str:iList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","I");
+                total_list.add(map);
             }
             iList.clear();
         }
         if(jList.size()>1){
             for(String str:jList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","J");
+                total_list.add(map);
             }
             jList.clear();
         }
         if(kList.size()>1){
             for(String str:kList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","K");
+                total_list.add(map);
             }
             kList.clear();
         }
         if(lList.size()>1){
             for(String str:lList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","L");
+                total_list.add(map);
             }
             lList.clear();
         }
         if(mList.size()>1){
             for(String str:mList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","M");
+                total_list.add(map);
             }
             mList.clear();
         }
         if(nList.size()>1){
             for(String str:nList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","N");
+                total_list.add(map);
             }
             nList.clear();
         }
         if(oList.size()>1){
             for(String str:oList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","O");
+                total_list.add(map);
             }
             oList.clear();
         }
         if(pList.size()>1){
             for(String str:pList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","P");
+                total_list.add(map);
             }
             pList.clear();
         }
         if(qList.size()>1){
             for(String str:qList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","Q");
+                total_list.add(map);
             }
             qList.clear();
         }
         if(rList.size()>1){
             for(String str:rList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","R");
+                total_list.add(map);
             }
             rList.clear();
         }
         if(sList.size()>1){
             for(String str:dList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","S");
+                total_list.add(map);
             }
             sList.clear();
         }
         if(tList.size()>1){
             for(String str:tList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","T");
+                total_list.add(map);
             }
             tList.clear();
         }
         if(uList.size()>1){
             for(String str:uList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","U");
+                total_list.add(map);
             }
             uList.clear();
         }
         if(vList.size()>1){
             for(String str:vList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","V");
+                total_list.add(map);
             }
             vList.clear();
         }
         if(wList.size()>1){
             for(String str:wList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","W");
+                total_list.add(map);
             }
             wList.clear();
         }
         if(xList.size()>1){
             for(String str:xList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","X");
+                total_list.add(map);
             }
             xList.clear();
         }
         if(yList.size()>1){
             for(String str:yList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","Y");
+                total_list.add(map);
             }
             yList.clear();
         }
         if(zList.size()>1){
             for(String str:zList){
-                total_list.add(str);
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("name",str);
+                map.put("tag","Z");
+                total_list.add(map);
             }
             zList.clear();
         }
