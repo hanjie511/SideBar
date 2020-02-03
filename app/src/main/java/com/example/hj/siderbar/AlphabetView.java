@@ -68,14 +68,14 @@ public class AlphabetView extends View  {
         text_paint.setStyle(Paint.Style.FILL);
         textAlet_paint.setStyle(Paint.Style.FILL);
         textAlet_paint.setColor(Color.GRAY);
-        textAlet_paint.setTextSize(60);
-        RectF rectF=new RectF(max_width-50,5,max_width-15,max_height-5);
+        textAlet_paint.setTextSize(40);
+        RectF rectF=new RectF(max_width-30,5,max_width-5,max_height-5);
         paint.setColor(Color.DKGRAY);
         text_paint.setColor(Color.DKGRAY);
         canvas.drawRoundRect(rectF,15,15,paint);
-        text_paint.setTextSize(30);
+        text_paint.setTextSize(20);
         for(int i=0;i<27;i++){
-            canvas.drawText(alpha[i],max_width-45,(max_height/27)*i+(max_height/27)-20,text_paint);
+            canvas.drawText(alpha[i],max_width-25,(max_height/27)*i+(max_height/27)-10,text_paint);
         }
     }
     public interface OnClickListener{
