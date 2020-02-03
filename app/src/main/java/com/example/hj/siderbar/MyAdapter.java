@@ -10,8 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Map;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
-    ArrayList<Map<String,String>> list;
-    String group_text="";
+    ArrayList<String> list;
     public static class VH extends RecyclerView.ViewHolder{
         TextView groupText;
         TextView username;
@@ -23,7 +22,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
             linear=view.findViewById(R.id.username_linear);
         }
     }
-    public MyAdapter(ArrayList<Map<String,String>>list){
+    public MyAdapter(ArrayList<String>list){
         this.list=list;
     }
 
@@ -37,20 +36,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH vh, int i) {
-        String name=list.get(i).get("name");
+        String name=list.get(i);
         if(name.length()==1){
             if(name.charAt(0)>=65&&name.charAt(0)<=90){
                 vh.linear.setVisibility(View.GONE);
                 vh.groupText.setVisibility(View.VISIBLE);
                 vh.groupText.setText(name);
-                vh.username.setTag(list.get(i).get("tag"));
+                vh.username.setTag(list.get(i));
             }
 
         }else{
             vh.linear.setVisibility(View.VISIBLE);
             vh.groupText.setVisibility(View.GONE);
             vh.username.setText(name);
-            vh.username.setTag(list.get(i).get("tag"));
+            vh.username.setTag(list.get(i));
        }
     }
 
