@@ -26,7 +26,7 @@ public class PinyinUtils {
         hanyuPinyinOutputFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         hanyuPinyinOutputFormat.setVCharType(HanyuPinyinVCharType.WITH_V);
         char c = str.trim().charAt(0);
-        if (c >= 0x4E00 && c <= 0x9FA5) {
+        if (c >= 0x4E00 && c <= 0x9FA5) {//判断是否属于汉字字符
             try {
                 pinyin = pinyin + PinyinHelper.toHanyuPinyinStringArray(c, hanyuPinyinOutputFormat)[0];
             } catch (Exception e) {
@@ -68,11 +68,6 @@ public class PinyinUtils {
             for (String s : list) {
                 total_list.add(s);
             }
-        }
-        long time2 = System.currentTimeMillis();
-        System.out.println("time:" + (time2-time1));
-        for (String s : total_list) {
-            System.out.println("alpha:" + s);
         }
         return total_list;
     }
