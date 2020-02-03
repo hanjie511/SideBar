@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 
@@ -26,27 +27,13 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     boolean scrollToPosition=false;
+    ArrayList<String> list1=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-
     }
-    private void init_index_map(ArrayList<Map<String,String>> list){
-        for(int i=0;i<list.size();i++){
-            String name=list.get(i).get("name").toString();
-            if(name.length()==1&&(name.charAt(0)>=65&&name.charAt(0)<=90)){
-               index_map.put(name,i);
-               System.out.println("name:"+name);
-               System.out.println("i:"+i);
-            }
-        }
-    }
-
-
-
-
     private void initView(){
         view=findViewById(R.id.alpha);
         text=findViewById(R.id.alert_text_main);
@@ -56,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
         view.setOnClickListener(new AlphabetView.OnClickListener() {
             @Override
             public void onClick(String alpha) {
-                if(index_map.containsKey(alpha)){
-                    int position=(int)index_map.get(alpha);
-                    recyclerView.scrollToPosition(position);
+                if(list1.contains(alpha)){
+                    int position=(int)list1.indexOf(alpha);
+                    moveToPosition((LinearLayoutManager) recyclerView.getLayoutManager(),position);
                 }
             }
         });
-        ArrayList<String> list=new ArrayList<>();
+        LinkedList<String> list=new LinkedList<>();
         list.add("韩杰");
         list.add("赵高");
         list.add("王五");
@@ -95,32 +82,18 @@ public class MainActivity extends AppCompatActivity {
         list.add("赵子龙12");
         list.add("赵子龙13");
         list.add("徐鼎盛");
-        ArrayList<Map<String,String>> list1= PinyinUtils.getSortedListByAlpha(list);
-        init_index_map(list1);
+        list1= PinyinUtils.getSortedListByAlpha(list);
         linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         MyAdapter myAdapter=new MyAdapter(list1);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(myAdapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if(dy<=0){
-                    group_text.setVisibility(View.GONE);
-                }else if(dy>0){
-                        LinearLayoutManager linearLayoutManager=(LinearLayoutManager) recyclerView.getLayoutManager();
-                        View view=linearLayoutManager.getChildAt(0);
-                        TextView text=view.findViewById(R.id.username_item);
-                        group_text.setText(text.getTag().toString());
-                        group_text.setVisibility(View.VISIBLE);
-                }
-            }
-        });
     }
-
+    /*
+    将指定的列表项置顶显示的方法
+     */
+    public void moveToPosition(LinearLayoutManager manager, int n) {
+        manager.scrollToPositionWithOffset(n, 0);
+        manager.setStackFromEnd(true);
+    }
 }
