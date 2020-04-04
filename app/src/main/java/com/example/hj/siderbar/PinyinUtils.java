@@ -8,21 +8,23 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 public class PinyinUtils {
-    private static String[] alpha_array = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-
+    private static String[] alpha_array = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     /*
     该方法将字符串的首个汉字字符转化为拼音
      */
     public static String toHanyuPinyin(String str) {
         String pinyin = "";
         HanyuPinyinOutputFormat hanyuPinyinOutputFormat = new HanyuPinyinOutputFormat();
-        hanyuPinyinOutputFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        hanyuPinyinOutputFormat.setCaseType(HanyuPinyinCaseType.UPPERCASE);
         hanyuPinyinOutputFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         hanyuPinyinOutputFormat.setVCharType(HanyuPinyinVCharType.WITH_V);
         char c = str.trim().charAt(0);
@@ -42,7 +44,6 @@ public class PinyinUtils {
     将传过来的字符串列表按A-Z的顺序排序后返回
      */
     public static ArrayList<String> getSortedListByAlpha(LinkedList<String> list) {
-        long time1 = System.currentTimeMillis();
         ArrayList<String> total_list = new ArrayList<String>();
         String first_alpha = "";
         boolean flag = true;
@@ -72,4 +73,55 @@ public class PinyinUtils {
         return total_list;
     }
 
+    /*
+       将传过来的字符串列表按A-Z的顺序排序后返回
+        */
+    public  ArrayList<SortModel> getSortedListByAlpha(ArrayList<SortModel> list) {
+        long start=System.currentTimeMillis();
+        ArrayList<SortModel> total_list = new ArrayList<SortModel>();
+        String py_str = "";
+        SortModel sortModel=null;
+        Iterator<SortModel> iterator = list.iterator();
+        Set<Character> set=new HashSet();
+        while (iterator.hasNext()) {
+            sortModel = iterator.next();
+            py_str=PinyinUtils.toHanyuPinyin(sortModel.getName());
+            char alpha = py_str.charAt(0);
+            if(alpha>=65&&alpha<=90){
+                set.add(alpha);
+                sortModel.setSortStr(py_str);
+                sortModel.setTag(false);
+            }else{
+                set.add('#');
+                sortModel.setSortStr("#");
+                sortModel.setTag(false);
+            }
+            total_list.add(sortModel);
+        }
+        Iterator it=set.iterator();
+        while(it.hasNext()){
+            String c=it.next().toString();
+            sortModel=new SortModel();
+            sortModel.setName(c);
+            sortModel.setTag(true);
+            sortModel.setSortStr(c);
+            total_list.add(sortModel);
+        }
+        Collections.sort(total_list,new PinYinComparator());
+        long end=System.currentTimeMillis();
+        System.out.println(end-start);
+        return total_list;
+    }
+    private class PinYinComparator implements Comparator<SortModel>{
+        @Override
+        public int compare(SortModel o1, SortModel o2) {
+            if(o1.getSortStr().equals("#")&&!o2.getSortStr().equals("#")){
+                return -1;
+            }else if(!o1.getSortStr().equals("#")&&o2.equals("#")){
+                return 1;
+            }else{
+                return o1.getSortStr().compareTo(o2.getSortStr());
+            }
+        }
+    }
 }
